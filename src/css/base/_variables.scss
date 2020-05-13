@@ -1,0 +1,33 @@
+//Controls
+$color-controls: rgba(59, 89, 152, 1);
+$controls-width: 300px;
+$messages-width: 700px;
+
+$color-bar: rgba(223, 227, 238, 0.6);
+
+//Bubbles
+$color-chat-self: rgb(0, 153, 255);
+$color-chat-other: rgb(241, 240, 240);
+
+$dp--left-margin-right: 8px;
+$dp--left-length: 28px;
+$dp--left-total-length: $dp--left-length + $dp--left-margin-right;
+
+//Buttons
+$color-btn: rgba(139, 157, 195, 1);
+$color-btn-hover: rgba(139, 157, 195, 0.6);
+$color-btn-active: rgba(139, 157, 195, 0.3);
+$color-btn-border: rgba(247, 247, 247, 1);
+
+//Presets
+$color-preset: rgba(139, 157, 195, 1);
+$color-preset-hover: rgba(139, 157, 195, 0.6);
+$color-preset-active: rgba(139, 157, 195, 0.3);
+$color-preset-border: rgba(223, 227, 238, 0.6);
+
+$color-preset-selected: rgba(39, 58, 99, 1);
+$color-preset-selected-hover: rgba(28, 42, 71, 1);
+$color-preset-selected-border: rgba(57, 85, 145, 0.5);
+
+$preset-compressed-height: 40px;
+

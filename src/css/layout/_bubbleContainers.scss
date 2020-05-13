@@ -1,0 +1,32 @@
+.l-container {
+  display: flex;
+}
+
+.l-container {
+  &--last-bubble {
+    align-items: flex-end;
+    margin-bottom: 4px;
+  }
+
+  &--extra-bubbles {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &--self {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  &--extra-bubbles-self {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  &--dp-right {
+    flex-direction: row-reverse;
+    flex-grow: 2;
+    margin-top: 2px;
+  }    
+}
+

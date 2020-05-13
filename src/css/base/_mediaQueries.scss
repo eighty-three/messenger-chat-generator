@@ -1,0 +1,65 @@
+@import 'base/variables';
+@import 'base/mixins';
+
+@media screen and (min-width: 1611px) {
+  .c-timestamp {
+    font-size: .8rem * 1.25;
+  }
+
+  .c-bubble {
+    max-width: $messages-width * .55 * 1.25;
+    font-size: 1.25rem;
+
+    &__name {
+      max-width: $messages-width * .55 * 1.25;
+      margin-left: ($dp--left-length * 1.25) + $dp--left-margin-right;
+      font-size: 1.25rem;
+    }
+
+    &--extra {
+      margin-left: ($dp--left-length * 1.25) + $dp--left-margin-right;
+    }
+
+    &--img {
+      max-width: $messages-width * .8 * 1.25;
+      max-height: $messages-width * .8 * 1.25;
+    }
+  }
+
+  .c-dp {
+    &--left {
+      @include display-picture($dp--left-length * 1.25);
+    }
+    
+    &--right {
+      @include display-picture($dp--left-length/5*3 * 1.25);
+    }
+  }
+
+  .l-main__messages {
+    min-width: $messages-width * 1.25;
+    
+    &--w-2 {
+      width: $messages-width * 1.25;
+    }
+  }
+}
+  
+@media screen and (max-width: 1311px) {
+  .l-images {
+    position: relative;
+    min-height: 420px;
+    z-index: 0;
+    right: auto;
+  }
+
+  .l-main__images {
+    min-width: 0;
+    width: 0;
+  }
+
+  .c-images {
+    border-left: 0;
+  }
+}
+

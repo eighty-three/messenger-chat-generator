@@ -1,0 +1,15 @@
+@import 'base/variables';
+@import 'base/mixins';
+
+.c-dp {
+  &--left {
+    margin-right: $dp--left-margin-right;
+    @include display-picture($dp--left-length);
+  }
+
+  &--right {
+    margin-left: 3px;
+    @include display-picture($dp--left-length/5*3);
+  }
+}
+

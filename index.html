@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FB Messenger Chat Generator</title>
+    <link rel='stylesheet' href='styles.css'>
+    <link rel='apple-touch-icon' type='image/png' sizes='128x128' href='/icons/icon-128.png'>
+    <link rel='icon' type='image/png' sizes='32x32' href='/icons/icon-32.png'>
+    <link rel='icon' type='image/png' sizes='16x16' href='/icons/icon-16.png'>
+</head>
+<body>
+  <!-- Controls -->
+  <div class='l-controls c-controls h-scroll-hide'>
+
+    <!-- Delete -->
+    <div class='l-controls__delete-message l-controls__buttons'>
+      <button class='js-btn-delete-message c-btn c-btn--2'>Delete</button>
+      <button class='js-btn-delete-all c-btn c-btn--2'>Delete All</button>
+    </div>
+
+    <!-- Create -->
+    <div class='l-controls__create-message l-controls__buttons'>
+        <button class='js-btn-timestamp c-btn c-btn--1'>Add Timestamp</button>
+        <button class='js-btn-create-other c-btn c-btn--2'>Create Friend's Message</button>
+        <button class='js-btn-create-self c-btn c-btn--2'>Create My Message</button>
+        <button class='js-btn-add c-btn c-btn--1'>Add Bubble</button>
+    </div>
+
+    <!-- Presets -->
+    <div class='l-controls__presets h-f4'>
+      <div class='l-controls__buttons'>
+        <input type='file' class='js-preset-upload c-presets__upload' multiple accept='image/*'>
+        <button class='js-btn-add-preset c-btn c-btn--2'>Add Friend</button>
+        <button class='js-btn-delete-preset c-btn c-btn--2'>Delete Friend</button>
+      </div>
+      <div class='c-bar c-bar--top'></div>
+
+        <div class='c-presets__imgs js-preset-imgs'></div>
+        <div class='c-presets js-presets h-scroll-hide'>
+            <div class='c-presets__preset js-presets__preset'>
+              <input id='preset-0' name='presetSelect' type='radio' value='x' checked='checked' />
+              <label for='preset-0' class='c-presets__label js-presets__label js-preset-selected'></label>
+              <div class='c-presets__label--compressed js-preset-compressed js-preset-default'>
+                <img class='js-default-img' src='default.png'>
+                <span class='h-f4'>Default</span>
+              </div>
+            </div>
+        </div>
+
+      <div class='c-bar'></div>
+    </div>
+
+    <!-- Images -->
+    <div class='js-images l-images c-images h-scroll-hide'>
+      <div class='l-images__buttons'>
+        <input type='file' class='js-image-upload c-images__upload' multiple accept='image/*'>
+        <button class='js-btn-image c-btn c-btn--1 h-f1'>Upload Images</button>
+      </div>
+      <div class='c-bar c-bar--top'></div>
+    
+      <div class='js-images-container l-images__container h-scroll-hide h-f4'></div>
+    
+      <div class='c-bar c-bar--bottom'></div>
+      <div class='l-images__buttons'>
+        <button class='js-btn-unselect c-btn c-btn--2 h-f1'>Unselect Image</button>
+        <button class='js-btn-delete-image c-btn c-btn--2 h-f1'>Delete Image</button>
+      </div>
+    </div>
+
+    <!-- Save -->
+    <div class='l-controls__save l-controls__buttons'>
+      <button class='js-btn-save c-btn c-btn--1'>Save</button>
+    </div>
+  </div>
+
+<!-- For layout of body, because controls and images have absolute position -->
+  <div class='js-main-layout l-main'>
+    <div class='l-main__controls'></div>
+    <div class='l-main__messages--w-1'>
+      <div class='l-main__messages--w-2'>
+        <div class='js-messages l-main__messages c-messages'></div>
+      </div>
+    </div>
+    <div class='l-main__images'></div>
+  </div>
+<script type='module' src='bundle.js'></script>
+</body>
+</html>

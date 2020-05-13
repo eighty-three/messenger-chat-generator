@@ -1,0 +1,38 @@
+import { imageUpload, presetImageUpload } from './constants';
+import { createMessageOther, createMessageSelf } from './createMessage';
+import { addBubble } from './addBubble';
+import { createTimestamp } from './timestamp';
+import { deleteMessage, deleteAllMessages } from './deleteMessages';
+import { addPreset, deletePreset, togglePreset } from './presets';
+import { saveToImage } from './saveToImage';
+import { addImages, unselectImage, deleteImage } from './uploadImages';
+
+(function() {
+  //Create
+  document.querySelector('.js-btn-timestamp').addEventListener('click', createTimestamp);
+  document.querySelector('.js-btn-create-other').addEventListener('click', createMessageOther);
+  document.querySelector('.js-btn-create-self').addEventListener('click', createMessageSelf);
+  document.querySelector('.js-btn-add').addEventListener('click', addBubble);
+
+  //Delete
+  document.querySelector('.js-btn-delete-all').addEventListener('click', deleteAllMessages);
+  document.querySelector('.js-btn-delete-message').addEventListener('click', deleteMessage);
+
+  //Presets
+  document.querySelector('.js-btn-add-preset').addEventListener('click', () => presetImageUpload.click());
+  presetImageUpload.addEventListener('change', addPreset);
+  document.querySelector('.js-btn-delete-preset').addEventListener('click', deletePreset);
+  document.querySelector('.js-preset-compressed').addEventListener('click', togglePreset);
+  document.querySelector('.js-presets__label').addEventListener('click', togglePreset);
+  
+  //Save
+  document.querySelector('.js-btn-save').addEventListener('click', saveToImage);
+
+  //Images
+  document.querySelector('.js-btn-image').addEventListener('click', () => imageUpload.click());
+  imageUpload.addEventListener('change', addImages);
+  document.querySelector('.js-btn-unselect').addEventListener('click', unselectImage);
+  document.querySelector('.js-btn-delete-image').addEventListener('click', deleteImage);
+
+} ());
+

@@ -1,0 +1,8 @@
+@mixin display-picture($property) {
+  object-fit: cover;
+	height: $property;
+	width: $property;
+	max-width: $property; //Firefox sets min-width to a different value
+  border-radius: 50%;
+}
+
