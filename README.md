@@ -167,16 +167,3 @@ newImage.src = URL.createObjectURL(fileUploads[i]);
 [dom-to-image](https://github.com/tsayen/dom-to-image)
 > dom-to-image is a library which can turn arbitrary DOM node into a vector (SVG) or raster (PNG or JPEG) image, written in JavaScript. It's based on domvas by Paul Bakaus and has been completely rewritten, with some bugs fixed and some new features (like web font and image support) added.
 
-## Bug(s)
-* If someone deletes a friend and wants to add the very same friend (same image) back, there will be a duplicate in the _"Seen" Display Pictures_ as long as there's a message in the whole conversation sent by that specific _Friend_ before deletion. It only differentiates between the ID generated, not the image hash
-
-## Features to be added ~~(never ever)~~
-* Mobile mode (different style in Messenger app vs. using the messenger.com website)
-* Mobile media query (make the web app usable on smartphones)
-* Reacts, quoting, emojis, stickers
-* Manual placement of _"Seen" Display Pictures_
-  * For example, last message is seen only by `$total-$x` people instead of `$total`, where the other `$x` is set at some other previous message.
-* Allow cropping of image before setting as DP when using **Add Friend**
-* External links for images
-* **Delete** only deletes the last bubble instead of the whole message
-
