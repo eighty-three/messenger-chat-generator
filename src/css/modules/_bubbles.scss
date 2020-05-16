@@ -21,7 +21,7 @@
   &__name {
     position: relative;
     max-width: $messages-width * .55;
-    padding: 10px 0 0 12px;
+    padding-left: 12px;
     margin-left: $dp--left-total-length;
   }
 
@@ -52,6 +52,7 @@
 
   > span[style] { //Copy pasting from chat bubbles copies the style too, need these rules to fix
     background-color: inherit !important;
+    font-size: inherit !important;
     color: inherit !important;
   }
 }
