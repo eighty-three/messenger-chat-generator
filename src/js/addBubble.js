@@ -1,4 +1,4 @@
-import { messagesContainer, imagesContainer } from './constants';
+import { messagesContainer } from './constants';
 import { setTextEditable } from './bubblesHelper';
 import { unselectImage } from './uploadImages';
 
@@ -28,14 +28,13 @@ const addBubbleOther = () => {
     : 'c-bubble--extra c-bubble--img';
 
   let newBubble;
-  let selectedImage = document.querySelector('input[name="imageSelect"]:checked');
+  let selectedImage = document.querySelector('input[name="imageSelect"]:checked ~ label > img');
   if (!selectedImage) {
     newBubble = document.createElement('div');
     newBubble.className = 'c-bubble c-bubble__edge--last';
     setTextEditable(newBubble);
   } else {
-    let image = imagesContainer.children[selectedImage.value].lastElementChild.lastElementChild;
-    newBubble = image.cloneNode(true);
+    newBubble = selectedImage.cloneNode(true);
     newBubble.removeAttribute('id');
     newBubble.onload = function() {
       newBubble.className = 'c-bubble--img';
@@ -60,14 +59,13 @@ const addBubbleSelf = () => {
     : 'c-bubble--img';
 
   let newBubbleSelf;
-  let selectedImage = document.querySelector('input[name="imageSelect"]:checked');
+  let selectedImage = document.querySelector('input[name="imageSelect"]:checked ~ label > img');
   if (!selectedImage) {
     newBubbleSelf = document.createElement('div');
     newBubbleSelf.className = 'c-bubble c-bubble--self c-bubble__edge--self-last';
     setTextEditable(newBubbleSelf);
   } else {
-    let image = imagesContainer.children[selectedImage.value].lastElementChild.lastElementChild;
-    newBubbleSelf = image.cloneNode(true);
+    newBubbleSelf = selectedImage.cloneNode(true);
     newBubbleSelf.removeAttribute('id');
     newBubbleSelf.onload = function() {
       newBubbleSelf.className = 'c-bubble--img';
