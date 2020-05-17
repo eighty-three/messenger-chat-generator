@@ -2,7 +2,6 @@ export const messagesContainer = document.getElementById('messagesContainer');
 
 export const dpListContainer = document.getElementById('dpListContainer');
 
-
 //Presets
 export const presetsContainer = document.getElementById('presetContainer');
 export const presetImageUpload = document.getElementById('presetImageUpload');
