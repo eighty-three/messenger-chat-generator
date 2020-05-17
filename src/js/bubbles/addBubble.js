@@ -1,6 +1,6 @@
-import { messagesContainer } from './constants';
+import { messagesContainer } from '../constants';
 import { setTextEditable } from './bubblesHelper';
-import { unselectImage } from './uploadImages';
+import { unselectImage } from '../uploadImages';
 
 export const addBubble = () => {
   if (

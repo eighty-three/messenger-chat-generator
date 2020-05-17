@@ -1,5 +1,5 @@
 import { messagesContainer } from './constants';
-import { setTextEditable } from './bubblesHelper';
+import { setTextEditable } from './bubbles/bubblesHelper';
 
 export const createTimestamp = () => {
   let timestamp = document.createElement('div');

@@ -1,4 +1,4 @@
-import { counters, displayPictures, messagesContainer } from './constants';
+import { messagesContainer, dpListContainer } from './constants';
 
 export const deleteAllMessages = () => {
   while (messagesContainer.firstElementChild) deleteMessage();
@@ -8,17 +8,19 @@ export const deleteMessage = () => {
   if (messagesContainer.firstElementChild) {
     let latestMessage = messagesContainer.lastElementChild; 
     if (!(latestMessage.classList.contains('js-timestamp'))) {
-      //Setting correct previous left DP after deleting latest message
-      let dpCurrent = displayPictures.previous[displayPictures.previous.length-1];
-      if (latestMessage.classList.contains('js-message--other')) {
-        if (displayPictures.list.includes(dpCurrent)) displayPictures.list.splice(displayPictures.list.indexOf(dpCurrent), 1);
-        displayPictures.previous.pop();
-        counters.otherMessages--;
+      let dpContainer = latestMessage.querySelector('.js-right-dp-container');
+      if (dpContainer) {
+        let len = dpContainer.children.length;
+        for (let i=0; i < len; i++) {
+          let arr = Array.from(dpContainer.children);
+          let el = arr.pop();
+          el.className = 'c-dp--list js-dp-from-list';
+          dpListContainer.append(el);
+        }
+        dpContainer.remove();
       }
     }
     latestMessage.remove();
-  } else {  
-    displayPictures.list.length = 0;
   }
 };
 

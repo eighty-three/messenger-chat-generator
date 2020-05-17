@@ -12,13 +12,13 @@ export const imageUpload = document.querySelector('.js-image-upload');
 
 export const counters = {
   'totalPresets': 1,
-  'otherMessages': 1,
   'totalImages': 0,
   'presetId': 0 //Prevent ID collision when deleting a preset and then creating a new one immediately
 };
 
 export const displayPictures = {
   'list': [],
-  'previous': []
+  'previous': [],
+  'inUse': []
 };
 

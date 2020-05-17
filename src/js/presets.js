@@ -1,4 +1,4 @@
-import { presetImages, presetsContainer, counters, presetImageUpload, defaultPreset } from './constants';
+import { presetImages, presetsContainer, counters, presetImageUpload, defaultPreset, dpListContainer } from './constants';
 
 export const togglePreset = (e) => {
   let selectedPreset = document.querySelector('input[name="presetSelect"]:checked + .js-preset-selected');
@@ -85,11 +85,26 @@ export const addPreset = () => {
       .substr(0, 60); //60 characters max
 
     let newImageCompressed = newImage.cloneNode(true);
-    
+
     let name = document.createElement('span');
     name.className = 'h-f4';
     name.textContent = nameField.value;
-   
+
+    let dpListNewImage = newImage.cloneNode(true);
+    dpListNewImage.className = 'c-dp--list js-dp-from-list';
+    dpListNewImage.id = `js-${counters.presetId}-dp`;
+
+    dpListNewImage.addEventListener('dragstart', function(e) {
+      e.target.style.opacity = .5;
+      e.dataTransfer.setData('text', e.target.id);
+    });
+
+    dpListNewImage.addEventListener('dragend', function(e) {
+      e.target.style.opacity = 1;
+    });
+
+    dpListContainer.append(dpListNewImage);      
+
     presetImages.append(newImage);
     presetsContainer.append(newPreset);
     newPreset.append(presetRadio, presetLabel, presetCompressed);

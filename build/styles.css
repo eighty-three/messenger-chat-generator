@@ -450,7 +450,7 @@ input[type='radio'] {
 .c-dp__controls {
   box-sizing: border-box;
   width: 100%;
-  height: 200px; }
+  height: 250px; }
 
 @media screen and (min-width: 1611px) {
   .c-timestamp {
@@ -499,5 +499,5 @@ input[type='radio'] {
     border-left: 0; } }
 
 .js-dp-toggle {
-  min-height: 300px; }
+  min-height: 340px; }
 

@@ -1,5 +1,5 @@
-import { counters, displayPictures, messagesContainer, dpListContainer } from './constants';
-import { setTextEditable } from './bubblesHelper';
+import { displayPictures, messagesContainer } from './constants';
+import { setTextEditable } from './bubbles/bubblesHelper';
 import { unselectImage } from './uploadImages';
 
 export const createMessageOther = () => {
@@ -14,6 +14,10 @@ export const createMessageOther = () => {
   ) {
     let newContainer = document.createElement('div');
     newContainer.className = 'c-message__container js-message__container js-message--other';
+    newContainer.addEventListener('drop', function(e) {
+      e.preventDefault();
+    });
+
     let newMessage = document.createElement('div'); //For chat bubble structure
     let extraBubblesContainer = document.createElement('div');
     extraBubblesContainer.className = 'l-container l-container--extra-bubbles js-extra-bubbles-container';
@@ -26,16 +30,23 @@ export const createMessageOther = () => {
       newBubble = document.createElement('div');
       newBubble.className = 'c-bubble';
       setTextEditable(newBubble);
+
+      newBubble.addEventListener('drop', function(e) { // For dropping display pictures
+        e.preventDefault();
+      });
     } else {
       newBubble = selectedImage.cloneNode(true);
       newBubble.removeAttribute('id');
       newBubble.onload = function () {
         newBubble.className = 'c-bubble--img';
       };
+
+      newBubble.addEventListener('drop', function(e) {
+        e.preventDefault();
+      });
     }
     
     //js-create--other unique
-    counters.otherMessages++;
     messagesContainer.append(newContainer);
     newContainer.append(newMessage);
     newMessage.append(extraBubblesContainer, lastBubbleContainer);
@@ -48,24 +59,21 @@ export const createMessageOther = () => {
     messageSender.innerText = (nameField && nameField.value !== '') ? nameField.value : 'Edit this text';
 
     let dpContainer = dpSource.cloneNode(true);
-    dpContainer.className = 'c-dp--left';
+    dpContainer.className = `c-dp--left ${dpCurrent}-list`;
     dpContainer.removeAttribute('id');
 
     newMessage.prepend(messageSender);
     lastBubbleContainer.prepend(dpContainer);
 
-    if (!(displayPictures.list.includes(dpCurrent))) { //For right DP order
-      displayPictures.list.push(dpCurrent);
-      let dpNew = dpSource.cloneNode(true);
-      dpNew.className = 'c-dp--list';
-      dpListContainer.append(dpNew);      
-    } else {
-      displayPictures.list.splice(displayPictures.list.indexOf(dpCurrent), 1);
-      displayPictures.list.push(dpCurrent);
-    }
     displayPictures.previous.push(dpCurrent);
+    displayPictures.inUse.push(`${dpCurrent}-list`);
 
     unselectImage();
+    let toggleButton = document.querySelector('.js-btn-toggle-dp');
+    if (!(toggleButton.classList.contains('js-toggle'))) { //To add event listeners to newly created messages with controls open
+      toggleButton.click();
+      toggleButton.click();
+    }
   }
 };
 
@@ -76,8 +84,11 @@ export const createMessageSelf = () => {
   ) {
     let newContainer = document.createElement('div');
     newContainer.className = 'c-message__container js-message__container js-message--self';
+    newContainer.addEventListener('drop', function(e) {
+      e.preventDefault();
+    });
     let newMessageSelf = document.createElement('div');
-    newMessageSelf.className = 'l-container l-container--self';
+    newMessageSelf.className = 'l-container l-container--self js-container-self';
     let extraBubblesContainerSelf = document.createElement('div');
     extraBubblesContainerSelf.className = 'l-container l-container--extra-bubbles-self js-extra-bubbles-container-self';
     let lastBubbleContainerSelf = document.createElement('div');
@@ -89,12 +100,20 @@ export const createMessageSelf = () => {
       newBubbleSelf = document.createElement('div');
       newBubbleSelf.className = 'c-bubble c-bubble--self';
       setTextEditable(newBubbleSelf);
+
+      newBubbleSelf.addEventListener('drop', function(e) { //For dropping display pictures
+        e.preventDefault();
+      });
     } else {
       newBubbleSelf = selectedImage.cloneNode(true);
       newBubbleSelf.removeAttribute('id');
       newBubbleSelf.onload = function () {
         newBubbleSelf.className = 'c-bubble--img';
       };
+
+      newBubbleSelf.addEventListener('drop', function(e) {
+        e.preventDefault();
+      });
     }
 
     messagesContainer.append(newContainer);
@@ -103,6 +122,11 @@ export const createMessageSelf = () => {
     lastBubbleContainerSelf.append(newBubbleSelf);
 
     unselectImage();
+    let toggleButton = document.querySelector('.js-btn-toggle-dp');
+    if (!(toggleButton.classList.contains('js-toggle'))) {
+      toggleButton.click();
+      toggleButton.click();
+    }
   }
 };
 
