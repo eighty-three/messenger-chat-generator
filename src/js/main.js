@@ -25,6 +25,7 @@ import defaultIMG from '../assets/images/default.png';
   document.getElementById('btnDPRemoveAll').addEventListener('click', removeRightDP);
   document.getElementById('btnDPAppendAll').addEventListener('click', createRightDP);
   document.getElementById('btnDPRefresh').addEventListener('click', refreshList);
+
   let dpListDefault = document.createElement('img');
   dpListDefault.src = defaultIMG;
   dpListDefault.id = 'dpListDefault';
