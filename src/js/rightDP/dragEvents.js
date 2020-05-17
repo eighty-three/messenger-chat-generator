@@ -1,20 +1,16 @@
 export const dragOver = (e) => {
   e.preventDefault();
-  return false;
 };
 
 export const dragEnter = (e) => {
   if (
-    (e.target.parentNode.parentNode.classList.contains('js-message__container')
+    (e.target.parentNode.parentNode.classList.contains('js-message__container') //Dropping image into `message--other` uses last bubble container as its target
     && e.target.classList.contains('js-last-bubble-container'))
-    || e.target.classList.contains('js-container-self')
+    || e.target.classList.contains('js-container-self') //On the other hand, with `message--self`, it uses the whole message itself (due to difference in CSS)
   ) {
-    let el;
-    if (e.target.classList.contains('js-container-self')) {
-      el = e.target;
-    } else {
-      el = e.target.parentNode.parentNode;
-    }
+    let el = (e.target.classList.contains('js-container-self'))
+      ? e.target
+      : e.target.parentNode.parentNode;
     el.setAttribute('style', 'background-color: rgb(59, 89, 152)');
   }
 };
@@ -25,12 +21,9 @@ export const dragLeave = (e) => {
     && e.target.classList.contains('js-last-bubble-container'))
     || e.target.classList.contains('js-container-self')
   ) {
-    let el;
-    if (e.target.classList.contains('js-container-self')) {
-      el = e.target;
-    } else {
-      el = e.target.parentNode.parentNode;
-    }
+    let el = (e.target.classList.contains('js-container-self'))
+      ? e.target
+      : e.target.parentNode.parentNode;
     el.setAttribute('style', 'background-color: ""');
   }
 };
@@ -46,6 +39,7 @@ export const dragDrop = (e) => {
       ? e.target
       : e.target.parentNode.parentNode;
     el.setAttribute('style', 'background-color: ""');
+
     let dp = document.getElementById(e.dataTransfer.getData('text'));
     if (dp && dp.classList.contains('js-dp-from-list')) {
       dp.className = 'c-dp--right';
