@@ -49,7 +49,7 @@ export const addPreset = () => {
   let filesTotal = fileUploads.length;
   for (let i=0; i < filesTotal; i++) {
     let newPreset = document.createElement('div');
-    newPreset.className = 'c-presets__preset js-presets__preset';
+    newPreset.className = 'c-presets__preset';
     
     let presetRadio = document.createElement('input');
     presetRadio.id = `preset-${counters.totalPresets}`;

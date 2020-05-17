@@ -1,14 +1,17 @@
-export const messagesContainer = document.querySelector('.js-messages');
+export const messagesContainer = document.getElementById('messagesContainer');
 
-export const dpListContainer = document.querySelector('.js-dp-list-container');
+export const dpListContainer = document.getElementById('dpListContainer');
 
-export const presetsContainer = document.querySelector('.js-presets');
-export const presetImageUpload = document.querySelector('.js-preset-upload');
-export const presetImages = document.querySelector('.js-preset-imgs');
-export const defaultPreset = document.querySelector('.js-preset-default');
 
-export const imagesContainer = document.querySelector('.js-images-container');
-export const imageUpload = document.querySelector('.js-image-upload');
+//Presets
+export const presetsContainer = document.getElementById('presetContainer');
+export const presetImageUpload = document.getElementById('presetImageUpload');
+export const presetImages = document.getElementById('presetImages');
+export const defaultPreset = document.getElementById('defaultPreset');
+
+//Images
+export const imagesContainer = document.getElementById('imagesContainer');
+export const imageUpload = document.getElementById('imagesUpload');
 
 export const counters = {
   'totalPresets': 1,

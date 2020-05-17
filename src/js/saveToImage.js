@@ -2,7 +2,7 @@ import domtoimage from 'dom-to-image';
 import { messagesContainer } from './constants';
 
 export const saveToImage = () => {
-  let btn = document.querySelector('.js-btn-save');
+  let btn = document.getElementById('btnSave');
   btn.innerText = 'Saving... (this takes a while)';
 
   domtoimage.toPng(messagesContainer)

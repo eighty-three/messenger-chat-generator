@@ -29,7 +29,6 @@ export const dragLeave = (e) => {
 };
 
 export const dragDrop = (e) => {
-  console.log(e.target);
   if (
     (e.target.parentNode.parentNode.classList.contains('js-message__container')
     && e.target.classList.contains('js-last-bubble-container'))

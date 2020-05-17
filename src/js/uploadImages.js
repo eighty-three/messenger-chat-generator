@@ -33,7 +33,8 @@ export const addImages = () => {
     label.append(newImage);
     counters.totalImages++;
   }
-  let btn = document.querySelector('.js-btn-image');
+
+  let btn = document.getElementById('btnImageUpload');
   btn.innerText = 'Upload Successful!';
   setTimeout(function () { //Delay turning back the text
     btn.innerText = 'Upload Images';

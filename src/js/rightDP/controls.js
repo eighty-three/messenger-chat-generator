@@ -1,7 +1,7 @@
 import { dragOver, dragEnter, dragLeave, dragDrop } from './dragEvents';
 import { messagesContainer, dpListContainer, displayPictures } from '../constants';
 
-const deleteRightDP = (dpContainer) => {
+export const deleteRightDP = (dpContainer) => {
   let len = dpContainer.children.length;
   for (let i=0; i < len; i++) {
     let arr = Array.from(dpContainer.children);
@@ -12,14 +12,13 @@ const deleteRightDP = (dpContainer) => {
   dpContainer.remove();
 };
 
-
 export const removeRightDP = () => {
   Array.from(document.getElementsByClassName('js-right-dp-container')).forEach((el) => deleteRightDP(el));
 };
 
 export const toggleCreateDP = () => {
-  let toggleButton = document.querySelector('.js-btn-toggle-dp');
-  let dpControls = document.querySelector('.js-controls-dp');
+  let toggleButton = document.getElementById('btnDPToggle');
+  let dpControls = document.getElementById('dpControlsContainer');
   if (toggleButton.classList.contains('js-toggle')) {
     toggleButton.textContent = 'Hide "Seen" DP Controls';
     toggleButton.classList.toggle('js-toggle');
