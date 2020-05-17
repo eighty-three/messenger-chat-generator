@@ -10,7 +10,7 @@ export const deleteItem = () => {
     let latestMessage = messagesContainer.lastElementChild; 
     if (!(latestMessage.classList.contains('js-timestamp'))) {
       let dpContainer = latestMessage.querySelector('.js-right-dp-container');
-      deleteRightDP(dpContainer);
+      if (dpContainer) deleteRightDP(dpContainer);
     }
     latestMessage.remove();
   }
