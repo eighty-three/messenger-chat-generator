@@ -69,7 +69,7 @@ export const createMessageOther = () => {
     displayPictures.inUse.push(`${dpCurrent}-list`);
 
     unselectImage();
-    let toggleButton = document.querySelector('.js-btn-toggle-dp');
+    let toggleButton = document.getElementById('btnDPToggle');
     if (!(toggleButton.classList.contains('js-toggle'))) { //To add event listeners to newly created messages with controls open
       toggleButton.click();
       toggleButton.click();
@@ -122,7 +122,7 @@ export const createMessageSelf = () => {
     lastBubbleContainerSelf.append(newBubbleSelf);
 
     unselectImage();
-    let toggleButton = document.querySelector('.js-btn-toggle-dp');
+    let toggleButton = document.getElementById('btnDPToggle');
     if (!(toggleButton.classList.contains('js-toggle'))) {
       toggleButton.click();
       toggleButton.click();
