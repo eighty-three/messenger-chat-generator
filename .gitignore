@@ -1,5 +1,5 @@
 *.swp
 /node_modules/
 /diff/
-/build/icons
+/build/
 

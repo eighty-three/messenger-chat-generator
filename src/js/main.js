@@ -1,4 +1,4 @@
-import { imageUpload, presetImageUpload } from './constants';
+import { imageUpload, presetImageUpload, dpListContainer } from './constants';
 import { createMessageOther, createMessageSelf } from './createMessage';
 import { addBubble } from './bubbles/addBubble';
 import { createTimestamp } from './timestamp';
@@ -7,6 +7,7 @@ import { toggleCreateDP, createRightDP, removeRightDP, refreshList } from './rig
 import { addPreset, deletePreset, togglePreset } from './presets';
 import { saveToImage } from './saveToImage';
 import { addImages, unselectImage, deleteImage } from './uploadImages';
+import defaultIMG from '../assets/images/default.png';
 
 (function() {
   //Create
@@ -24,7 +25,9 @@ import { addImages, unselectImage, deleteImage } from './uploadImages';
   document.querySelector('.js-btn-remove-dp').addEventListener('click', removeRightDP);
   document.querySelector('.js-btn-append-dp').addEventListener('click', createRightDP);
   document.querySelector('.js-btn-refresh-dp').addEventListener('click', refreshList);
-  let dpListDefault = document.getElementById('js-list-dp-default');
+  let dpListDefault = document.createElement('img');
+  dpListDefault.src = defaultIMG;
+  dpListDefault.className = 'js-dp-from-list c-dp--list';
   dpListDefault.addEventListener('dragstart', function(e) {
     e.target.style.opacity = .5;
     e.dataTransfer.setData('text', e.target.id);
@@ -32,6 +35,7 @@ import { addImages, unselectImage, deleteImage } from './uploadImages';
   dpListDefault.addEventListener('dragend', function(e) {
     e.target.style.opacity = 1;
   });
+  dpListContainer.append(dpListDefault);
 
 
   //Presets
@@ -40,6 +44,12 @@ import { addImages, unselectImage, deleteImage } from './uploadImages';
   document.querySelector('.js-btn-delete-preset').addEventListener('click', deletePreset);
   document.querySelector('.js-preset-compressed').addEventListener('click', togglePreset);
   document.querySelector('.js-presets__label').addEventListener('click', togglePreset);
+
+  let presetDefault = document.createElement('img');
+  presetDefault.src = defaultIMG;
+  presetDefault.className = 'js-default-img';
+  document.querySelector('.js-preset-default').prepend(presetDefault);
+
   
   //Save
   document.querySelector('.js-btn-save').addEventListener('click', saveToImage);

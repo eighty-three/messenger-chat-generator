@@ -26,7 +26,8 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
-          'sass-loader'
+          'resolve-url-loader',
+          'sass-loader?sourceMap'
         ],
         exclude: /node_modules/
       },
@@ -36,6 +37,12 @@ module.exports = {
         options: {
           outputPath: 'fonts'
         }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
       }
     ]
   },
