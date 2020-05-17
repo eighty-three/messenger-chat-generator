@@ -31,7 +31,7 @@ export const createMessageOther = () => {
       newBubble.className = 'c-bubble';
       setTextEditable(newBubble);
 
-      newBubble.addEventListener('drop', function(e) { // For dropping display pictures
+      newBubble.addEventListener('drop', function(e) { //For dropping display pictures, in Firefox it still adds the dragged image into the bubble itself
         e.preventDefault();
       });
     } else {
@@ -101,7 +101,7 @@ export const createMessageSelf = () => {
       newBubbleSelf.className = 'c-bubble c-bubble--self';
       setTextEditable(newBubbleSelf);
 
-      newBubbleSelf.addEventListener('drop', function(e) { //For dropping display pictures
+      newBubbleSelf.addEventListener('drop', function(e) {
         e.preventDefault();
       });
     } else {
