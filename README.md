@@ -6,6 +6,7 @@ A web application to generate a conversation in Messenger
 git clone git@github.com:eighty-three/messenger-chat-generator.git
 cd messenger-chat-generator
 npm ci
+npm run build
 npm start //Port 3001, change at index.js
 ```
 
