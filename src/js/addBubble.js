@@ -15,7 +15,7 @@ export const addBubble = () => {
 };
 
 const addBubbleOther = () => {
-  let latestMessage = messagesContainer.lastElementChild;
+  let latestMessage = messagesContainer.lastElementChild.firstElementChild;
   let extraBubblesContainer = latestMessage.querySelector('.js-extra-bubbles-container');
   let lastBubbleContainer = latestMessage.querySelector('.js-last-bubble-container'); 
   let lastBubble = lastBubbleContainer.lastElementChild; 
@@ -46,7 +46,7 @@ const addBubbleOther = () => {
 };
 
 const addBubbleSelf = () => {
-  let latestMessage = messagesContainer.lastElementChild;
+  let latestMessage = messagesContainer.lastElementChild.firstElementChild;
   let extraBubblesContainerSelf = latestMessage.querySelector('.js-extra-bubbles-container-self');
   let lastBubbleContainerSelf = latestMessage.querySelector('.js-last-bubble-container-self');
   let lastBubbleSelf = lastBubbleContainerSelf.firstElementChild;
