@@ -19,16 +19,17 @@ export const createMessageOther = () => {
     });
 
     let newMessage = document.createElement('div'); //For chat bubble structure
+    newMessage.className = 'c-bubble__container--other';
     let extraBubblesContainer = document.createElement('div');
-    extraBubblesContainer.className = 'l-container l-container--extra-bubbles js-extra-bubbles-container';
+    extraBubblesContainer.className = 'c-bubble__container--extra js-extra-bubbles-container';
     let lastBubbleContainer = document.createElement('div');
-    lastBubbleContainer.className = 'l-container l-container--last-bubble js-last-bubble-container';
+    lastBubbleContainer.className = 'c-bubble__container--last js-last-bubble-container';
 
     let newBubble;
     let selectedImage = document.querySelector('input[name="imageSelect"]:checked ~ label > img');
     if (!selectedImage) {
       newBubble = document.createElement('div');
-      newBubble.className = 'c-bubble';
+      newBubble.className = 'c-bubble c-bubble--first';
       setTextEditable(newBubble);
 
       newBubble.addEventListener('drop', function(e) { //For dropping display pictures, in Firefox it still adds the dragged image into the bubble itself
@@ -88,17 +89,17 @@ export const createMessageSelf = () => {
       e.preventDefault();
     });
     let newMessageSelf = document.createElement('div');
-    newMessageSelf.className = 'l-container l-container--self js-container-self';
+    newMessageSelf.className = 'c-bubble__container--self js-container-self';
     let extraBubblesContainerSelf = document.createElement('div');
-    extraBubblesContainerSelf.className = 'l-container l-container--extra-bubbles-self js-extra-bubbles-container-self';
+    extraBubblesContainerSelf.className = 'c-bubble__container--extra js-extra-bubbles-container';
     let lastBubbleContainerSelf = document.createElement('div');
-    lastBubbleContainerSelf.className = 'js-last-bubble-container-self';
+    lastBubbleContainerSelf.className = 'c-bubble__container--last js-last-bubble-container';
 
     let newBubbleSelf;
     let selectedImage = document.querySelector('input[name="imageSelect"]:checked ~ label > img');
     if (!selectedImage) {
       newBubbleSelf = document.createElement('div');
-      newBubbleSelf.className = 'c-bubble c-bubble--self';
+      newBubbleSelf.className = 'c-bubble c-bubble--first';
       setTextEditable(newBubbleSelf);
 
       newBubbleSelf.addEventListener('drop', function(e) {
