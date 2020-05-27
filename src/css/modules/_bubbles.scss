@@ -26,12 +26,6 @@
   }
 
   &--self {
-    background-color: $color-chat-self;
-  }
-
-  &--extra {
-    position: relative;
-    margin-left: $dp--left-total-length;
   }
 
   &--img {
@@ -41,19 +35,88 @@
     margin-top: 2px;
   }
 
-  &__edge-- {
-    &first { border-bottom-left-radius: 4px; }
-    &last { border-top-left-radius: 4px; }
-    &mid { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
-    &self-first { border-bottom-right-radius: 4px; }
-    &self-last { border-top-right-radius: 4px; }
-    &self-mid { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-  }
-
   > span[style] { //Copy pasting from chat bubbles copies the style too, need these rules to fix
     background-color: inherit !important;
     font-size: inherit !important;
     color: inherit !important;
+  }
+}
+
+
+//Container
+.c-bubble__container {
+  &--other {
+    > .c-bubble__container--extra {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+
+      > .c-bubble:first-child {
+        border-top-left-radius: 19.5px;
+        border-bottom-left-radius: 4px;
+      }
+
+      > .c-bubble {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      > img, div {
+        position: relative;
+        margin-left: $dp--left-total-length;
+      }
+    }
+
+    > .c-bubble__container--last {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 4px;
+
+      > .c-bubble {
+        border-top-left-radius: 4px;
+      }
+      
+      > .c-bubble--first {
+        border-radius: 19.5px;
+      }
+    }
+  }
+
+  &--self {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+    > .c-bubble__container--extra {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+
+      > .c-bubble:first-child {
+        border-top-right-radius: 19.5px;
+        border-bottom-right-radius: 4px;
+      }
+      
+      > .c-bubble {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+
+    > .c-bubble__container--last {
+      > .c-bubble {
+        border-top-right-radius: 4px; 
+      }
+
+      > .c-bubble--first {
+        border-radius: 19.5px;
+      }
+    }
+
+    .c-bubble {
+      background-color: $color-chat-self;
+      color: rgb(255, 255, 255);
+    }
   }
 }
 
@@ -72,10 +135,6 @@
     font: .8rem $font-fb;
     line-height: 1.28;
     color: rgba(0, 0, 0, .40);
-  }
-
-  &--self {
-    color: rgb(255, 255, 255);
   }
 }
 
