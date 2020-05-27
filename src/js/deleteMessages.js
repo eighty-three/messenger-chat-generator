@@ -20,19 +20,16 @@ export const deleteBubble = () => { //Basic structure, class/styling not yet inc
   if (messagesContainer.firstElementChild) {
     let latestMessage = messagesContainer.lastElementChild; 
     if (!(latestMessage.classList.contains('js-timestamp'))) {
-      let extraBubblesContainer = document.querySelector('class^=js-extra-bubbles-container');
-      let lastBubbleContainer = document.querySelector('class^=js-last-bubble-container');
+      let extraBubblesContainer = latestMessage.querySelector('.js-extra-bubbles-container');
+      let lastBubbleContainer = latestMessage.querySelector('.js-last-bubble-container');
       if (!extraBubblesContainer.firstChild) {
         deleteItem();
-      } else if (extraBubblesContainer.children === 1) {
+      } else if (extraBubblesContainer.children.length === 1) {
         lastBubbleContainer.lastElementChild.remove();
-        extraBubblesContainer.firstElementChild.className = (latestMessage.classList.contains('js-message--other') && extraBubblesContainer.firstElementChild.tagName !== 'IMG')
-          ? 'classname'
-          : 'classname';
-        lastBubbleContainer.prepend(extraBubblesContainer.firstElementChild);
+        lastBubbleContainer.append(extraBubblesContainer.firstElementChild);
       } else {
         lastBubbleContainer.lastElementChild.remove();
-        lastBubbleContainer.prepend(extraBubblesContainer.lastElementChild);
+        lastBubbleContainer.append(extraBubblesContainer.lastElementChild);
       }
     }
   }

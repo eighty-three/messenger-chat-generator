@@ -2,7 +2,7 @@ import { imageUpload, presetImageUpload, dpListContainer } from './constants';
 import { createMessageOther, createMessageSelf } from './createMessage';
 import { addBubble } from './bubbles/addBubble';
 import { createTimestamp } from './timestamp';
-import { deleteItem, deleteConversation } from './deleteMessages';
+import { deleteBubble, deleteItem, deleteConversation } from './deleteMessages';
 import { toggleCreateDP, createRightDP, removeRightDP, refreshList } from './rightDP/controls';
 import { addPreset, deletePreset, togglePreset } from './presets';
 import { saveToImage } from './saveToImage';
@@ -17,6 +17,7 @@ import defaultIMG from '../assets/images/default.png';
   document.getElementById('btnAddBubble').addEventListener('click', addBubble);
 
   //Delete
+  document.getElementById('btnDeleteBubble').addEventListener('click', deleteBubble);
   document.getElementById('btnDeleteItem').addEventListener('click', deleteItem);
   document.getElementById('btnDeleteConversation').addEventListener('click', deleteConversation);
 
