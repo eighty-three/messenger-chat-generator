@@ -18,6 +18,13 @@
     @include display-picture($dp--left-length*1.5);
   }
 
+  &__right-container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 2;
+    margin-top: 2px;
+  }
+
   &__list {
     overflow-y: auto;
     overflow-x: hidden;

@@ -46,7 +46,7 @@ export const dragDrop = (e) => {
         el.lastElementChild.append(dp);
       } else {
         let rightDPContainer = document.createElement('div');
-        rightDPContainer.className = 'l-container l-container--dp-right js-right-dp-container';
+        rightDPContainer.className = 'c-dp__right-container js-right-dp-container';
         el.append(rightDPContainer);
         rightDPContainer.append(dp);
       }
