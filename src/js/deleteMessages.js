@@ -16,7 +16,7 @@ export const deleteItem = () => {
   }
 };
 
-export const deleteBubble = () => { //Basic structure, class/styling not yet included
+export const deleteBubble = () => {
   if (messagesContainer.firstElementChild) {
     let latestMessage = messagesContainer.lastElementChild; 
     if (!(latestMessage.classList.contains('js-timestamp'))) {
