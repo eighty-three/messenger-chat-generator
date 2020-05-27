@@ -11,7 +11,10 @@ npm start //Port 3001, change at index.js
 ```
 
 ## Usage
+**Messages**
 ![Usage](/docs/usage.gif)
+**DP Controls**
+![DP Controls](/docs/dp.gif)
 
 ### Terms
 * __Bubble__  
@@ -22,18 +25,28 @@ npm start //Port 3001, change at index.js
 ![Conversation](/docs/t_conversation.png)
 
 ### Instructions
-* **Create Message** - creates a message either from a *Friend* (defaults to *Default*) or from you
-* **Add Bubble** - adds a bubble to the most recent message
-* **Create Timestamp** - creates a timestamp
-* **Delete Bubble** - deletes the last bubble inside a message
-* **Delete Item** - deletes the last item in the conversation, either a message or a timestamp. It deletes the whole message, not just the last bubble inside a message
-* **Delete Conversation** - deletes everything in the conversation
-* **Add Friend** - allows you to upload images from your local files to use as a display picture for the message
-* **Delete Friend** - deletes the selected *Friend* in the *Friends List*. It will delete the last item if *Default* is selected
-* **Upload Images** - allows you to upload images from your local files to include in your messages
-* **Unselect Image** - unselects the image selected in the *Images List*
-* **Delete Image** - deletes the selected image in the *Images List*. It will delete the last item if there is nothing selected
-* **Save** - sets the whole conversation to an image that is downloaded to your device
+* **CREATE**
+  * **Create Message** - creates a message either from a *Friend* (defaults to *Default*) or from you
+  * **Add Bubble** - adds a bubble to the most recent message
+  * **Create Timestamp** - creates a timestamp
+* **DELETE**
+  * **Delete Bubble** - deletes the last bubble from the latest message
+  * **Delete Item** - deletes the last item in the conversation, either a message or a timestamp
+  * **Delete Conversation** - deletes everything in the conversation
+* **DP CONTROLS**
+  * **Toggle** - 
+  * **Remove All DP** -
+  * **Append All DP** -
+  * **Refresh List From Current Messages** -
+* **FRIENDS**
+  * **Add Friend** - allows you to upload images from your local files to use as a display picture for the message
+  * **Delete Friend** - deletes the selected *Friend* in the *Friends List*. It will delete the last item if *Default* is selected
+* **IMAGES**
+  * **Upload Images** - allows you to upload images from your local files to include in your messages
+  * **Unselect Image** - unselects the image selected in the *Images List*
+  * **Delete Image** - deletes the selected image in the *Images List*. It will delete the last item if there is nothing selected
+* **SAVE**
+  * **Save** - sets the whole conversation to an image that is downloaded to your device
 
 ### Misc
 * **Create Message** won't do anything if the last message is from the same person (via the ID generated when using **Add Friend**, or if it's from yourself), unless there's a timestamp in between
@@ -63,15 +76,11 @@ newBubble = document.createElement('div');
 messagesContainer.append(newMessage);
 newMessage.append(messageSender, extraBubblesContainer, lastBubbleContainer);
 lastBubbleContainer.append(dpContainer, newBubble);
-createRightDp();
-
-//createRightDp in bubblesHelper.js
-messagesContainer.lastElementChild.append(rightDPContainer); 
 ```
 
-The structure is almost the exact same when using `createMessageSelf` except it has no `messageSender` (your name isn't seen) and `dpContainer` (you can't see your own photo in your messages).
+The structure is similar when using `createMessageSelf` except it has no `messageSender` (your name isn't seen) and `dpContainer` (you can't see your own photo in your messages).
 
-When you use `addBubble`, it determines what type the last message was (`other` or `self`) before adding a new bubble. What happens is that the last bubble inside `lastBubbleContainer` is appended to `extraBubblesContainer`, and then it creates a new bubble which it then appends to `lastBubbleContainer`:
+When you use `addBubble`, the bubble inside `lastBubbleContainer` is appended to `extraBubblesContainer`, and then it creates a new bubble which is appended to `lastBubbleContainer`:
 
 ```javascript
 let latestMessage = messagesContainer.lastElementChild;
@@ -86,9 +95,9 @@ lastBubbleContainer.append(newBubble);
 ```
 
 The `classList` (styling) of each new bubble to be added depends on:
-1. The message it is added to
-2. If it's an image or not
-3. If there's a bubble in `extraBubblesContainer`, that is, it isn't the first bubble to be added using `addBubble`
+1. The message it is added to (`js-message--other` or `js-message--self`)
+2. Where the bubble is located (`js-extra-bubbles-container` or `js-last-bubble-container`)
+3. Whether it's an image or not
 
 ### Sender ID
 When using **Add Friend**, an ID (more specifically, a unique class name that acts as a JavaScript hook) for the image is generated where the messages will source their display pictures from. The ID used is created not with some unique ID generator like `shortid` but using a simple counter `counters.presetId` ("Preset" is the word used in code instead of "Friend") initially set at zero.
@@ -115,40 +124,7 @@ addPreset()
 ```
 
 ### "Seen" Display Pictures
-The ID for the image is a `class` instead of an `id` because when creating a preset, it creates two copies of the same image used. The first one is appended to the `presetCompressed` element, while the other is appended to `presetImages`:
-```javascript
-let presetCompressed = document.createElement('div');
-...
-let newImage = document.createElement('img');
-newImage.src = URL.createObjectURL(fileUploads[i]);
-newImage.className = `js-${counters.presetId}`;
-
-let newImageCompressed = newImage.cloneNode(true);
-...
-presetImages.append(newImage);
-presetCompressed.append(newImageCompressed, name);
-```
-
-In the `createMessageOther` function, it gets the display picture it will display by getting the image under the selected radio. It also adds the first class of the image, the ID, and pushes it to `displayPictures.list` to be used for the _"Seen" Display Pictures_.
-
-```javascript
-//createMessageOther in createMessage.js
-let dpSource = document.querySelector('input[name="presetSelect"]:checked ~ .js-preset-compressed > img');
-let dpCurrent = dpSource.classList[0];
-...
-displayPictures.list.push(dpCurrent);
-
-//createRightDp in bubblesHelper.js
-let dpSource = document.querySelector(`.${displayPictures.list[i]}`);
-let rightDP = dpSource.cloneNode(true);
-```
-
-In summary:
-1. The `createMessageOther` function in `createMessage.js` chooses what display picture to use via the image under the selected preset (radio)
-2. It pushes the first class of the image, the ID, to `displayPictures.list`
-3. In the `createRightDp` function in `bubblesHelper.js`, it creates each display picture by cloning the element with the class `js-${presetId}`.
-
-This separate container for the images is relevant because if you delete the preset (via **Delete Friend**), the image gets deleted too. If the display pictures are sourced solely through the ones in the preset container, it obviously won't persist after **Delete Friend**. However, if the _Friend_ is still in the conversation, his display picture should still be included in the _"Seen" Display Pictures_.
+TBD
 
 ### Images
 When using **Upload Images**, similar to **Add Friend**, you can only select files from your device.
