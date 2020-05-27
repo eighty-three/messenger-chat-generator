@@ -25,8 +25,9 @@ npm start //Port 3001, change at index.js
 * **Create Message** - creates a message either from a *Friend* (defaults to *Default*) or from you
 * **Add Bubble** - adds a bubble to the most recent message
 * **Create Timestamp** - creates a timestamp
-* **Delete** - deletes the last item in the conversation, either a message or a timestamp. It deletes the whole message, not just the last bubble inside a message
-* **Delete All** - deletes everything in the conversation
+* **Delete Bubble** - deletes the last bubble inside a message
+* **Delete Item** - deletes the last item in the conversation, either a message or a timestamp. It deletes the whole message, not just the last bubble inside a message
+* **Delete Conversation** - deletes everything in the conversation
 * **Add Friend** - allows you to upload images from your local files to use as a display picture for the message
 * **Delete Friend** - deletes the selected *Friend* in the *Friends List*. It will delete the last item if *Default* is selected
 * **Upload Images** - allows you to upload images from your local files to include in your messages
