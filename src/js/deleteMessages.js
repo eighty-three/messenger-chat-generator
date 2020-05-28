@@ -11,7 +11,7 @@ export const deleteItem = () => {
     if (!(latestItem.classList.contains('js-timestamp'))) {
       let dpContainer = latestItem.querySelector('.js-right-dp-container');
       if (dpContainer) deleteRightDP(dpContainer);
-      displayPictures.inUse.pop();
+      if (latestItem.classList.contains('js-message--other')) displayPictures.inUse.pop();
     }
     latestItem.remove();
   }
