@@ -1,6 +1,7 @@
 import { displayPictures, messagesContainer } from './constants';
 import { setTextEditable } from './bubbles/bubblesHelper';
 import { unselectImage } from './uploadImages';
+import { dragOver, dragEnter, dragLeave, dragDrop } from './rightDP/dragEvents';
 
 export const createMessageOther = () => {
   let dpSource = document.querySelector('input[name="presetSelect"]:checked ~ .js-preset-compressed > img');
@@ -46,6 +47,14 @@ export const createMessageOther = () => {
         e.preventDefault();
       });
     }
+
+    let toggleButton = document.getElementById('btnDPToggle');
+    if (!(toggleButton.classList.contains('js-toggle'))) { //To add event listeners to newly created messages with controls open
+      newContainer.addEventListener('dragover', dragOver);
+      newContainer.addEventListener('dragenter', dragEnter);
+      newContainer.addEventListener('dragleave', dragLeave);
+      newContainer.addEventListener('drop', dragDrop);
+    }
     
     //js-create--other unique
     messagesContainer.append(newContainer);
@@ -70,11 +79,6 @@ export const createMessageOther = () => {
     displayPictures.inUse.push(`${dpCurrent}-list`);
 
     unselectImage();
-    let toggleButton = document.getElementById('btnDPToggle');
-    if (!(toggleButton.classList.contains('js-toggle'))) { //To add event listeners to newly created messages with controls open
-      toggleButton.click();
-      toggleButton.click();
-    }
   }
 };
 
@@ -117,17 +121,20 @@ export const createMessageSelf = () => {
       });
     }
 
+    let toggleButton = document.getElementById('btnDPToggle');
+    if (!(toggleButton.classList.contains('js-toggle'))) {
+      newContainer.addEventListener('dragover', dragOver);
+      newContainer.addEventListener('dragenter', dragEnter);
+      newContainer.addEventListener('dragleave', dragLeave);
+      newContainer.addEventListener('drop', dragDrop);
+    }
+
     messagesContainer.append(newContainer);
     newContainer.append(newMessageSelf);
     newMessageSelf.append(extraBubblesContainerSelf, lastBubbleContainerSelf);
     lastBubbleContainerSelf.append(newBubbleSelf);
 
     unselectImage();
-    let toggleButton = document.getElementById('btnDPToggle');
-    if (!(toggleButton.classList.contains('js-toggle'))) {
-      toggleButton.click();
-      toggleButton.click();
-    }
   }
 };
 
