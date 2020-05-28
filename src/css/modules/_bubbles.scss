@@ -104,6 +104,10 @@
     }
 
     > .c-bubble__container--last {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
       > .c-bubble {
         border-top-right-radius: 4px; 
       }
