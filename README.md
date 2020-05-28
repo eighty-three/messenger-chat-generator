@@ -15,6 +15,8 @@ npm start //Port 3001, change at index.js
 ![Usage](/docs/usage.gif)
 **DP Controls**
 ![DP Controls](/docs/dp.gif)
+**Deleting**
+![Delete](/docs/delete.gif)
 
 ### Terms
 * __Bubble__  
@@ -34,10 +36,10 @@ npm start //Port 3001, change at index.js
   * **Delete Item** - deletes the last item in the conversation, either a message or a timestamp
   * **Delete Conversation** - deletes everything in the conversation
 * **DP CONTROLS**
-  * **Toggle** - 
-  * **Remove All DP** -
-  * **Append All DP** -
-  * **Refresh List From Current Messages** -
+  * **Toggle** - toggles the controls
+  * **Remove All DP** - removes all currently used *Display Picture* in the conversation and puts them back in the *DP List*
+  * **Append All DP** - appends every *Display Picture* into the last message
+  * **Refresh List From Current Messages** - removes all currently used *Display Picture* in the conversation and puts them back in the *DP List*, and then deletes every *Display Picture* in the *DP List* that is currently not in the conversation. Using **Refresh List** will add back any *Display Picture* not in the *DP List* (that is, previously deleted by **Refresh List**) if the sender with the corresponding *Display Picture* is in the conversation
 * **FRIENDS**
   * **Add Friend** - allows you to upload images from your local files to use as a display picture for the message
   * **Delete Friend** - deletes the selected *Friend* in the *Friends List*. It will delete the last item if *Default* is selected
@@ -55,6 +57,7 @@ npm start //Port 3001, change at index.js
 * The images are uploaded from your local files; you cannot use external links for images
 * Selecting an image in the _Images List_ then using **Create Message** or **Add Bubble** attaches the image to the conversation. It unselects the image after you use it
 * An **Unselect Image** function is included because the images are an `input[radio]` and I opted for an **Unselect Image** function instead of hacking checkboxes.
+* **Save** doesn't work if total filesize of the content is too large. If it's (roughly) at 13000 characters or if the images attached add up to ~8MB (or a combination of the two), using **Save** won't do anything
 
 ## Technical Documentation
 A (short) explanation of some important details
