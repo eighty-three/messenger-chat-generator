@@ -1,4 +1,4 @@
-import { messagesContainer } from './constants';
+import { messagesContainer, displayPictures } from './constants';
 import { deleteRightDP } from './rightDP/controls';
 
 export const deleteConversation = () => {
@@ -7,12 +7,13 @@ export const deleteConversation = () => {
 
 export const deleteItem = () => {
   if (messagesContainer.firstElementChild) {
-    let latestMessage = messagesContainer.lastElementChild; 
-    if (!(latestMessage.classList.contains('js-timestamp'))) {
-      let dpContainer = latestMessage.querySelector('.js-right-dp-container');
+    let latestItem = messagesContainer.lastElementChild; 
+    if (!(latestItem.classList.contains('js-timestamp'))) {
+      let dpContainer = latestItem.querySelector('.js-right-dp-container');
       if (dpContainer) deleteRightDP(dpContainer);
+      displayPictures.inUse.pop();
     }
-    latestMessage.remove();
+    latestItem.remove();
   }
 };
 
