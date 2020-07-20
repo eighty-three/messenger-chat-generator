@@ -1,5 +1,5 @@
 # Messenger Chat Generator
-A web app that can create conversations in Facebook Messenger
+A web app that can simulate conversations from Facebook Messenger 
 
 ## Install
 ```
