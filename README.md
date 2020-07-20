@@ -127,8 +127,24 @@ addPreset()
 ```
 
 ### "Seen" Display Pictures
-TBD
-
+`drag` event listeners are attached to the last bubble in a message.
+Only images from **DP Controls** are allowed
+```javascript
+  // /src/js/rightDP/dragEvents.js
+  let dp = document.getElementById(e.dataTransfer.getData('text'));
+  if (dp && dp.classList.contains('js-dp-from-list')) {
+  ...
+```
+The toggle is not only to show/hide the controls, it also removes the event listeners to prevent unwanted behavior like showing the dropzone indicator. When it is toggled on, however, the visual behavior would work (highlighting the whole container to indicate dropzone) but the drop itself wouldn't because the dragged item needs a class `js-dp-from-list`
+```javascript
+  // /src/js/rightDP/controls.js
+  Array.from(document.getElementsByClassName('js-message__container')).forEach((el) => {
+    el.removeEventListener('dragover', dragOver);
+    el.removeEventListener('dragenter', dragEnter);
+    el.removeEventListener('dragleave', dragLeave);
+    el.removeEventListener('drop', dragDrop);
+  });
+```
 ### Images
 When using **Upload Images**, similar to **Add Friend**, you can only select files from your device.
 
