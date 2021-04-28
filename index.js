@@ -15,6 +15,10 @@ app.get(projectPath, (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.all('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'error.html'));
+});
+
 const PORT = 3002;
 server.listen(PORT, () => {
   console.log(`Server on port ${server.address().port}`);
