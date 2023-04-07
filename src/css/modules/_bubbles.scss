@@ -1,0 +1,144 @@
+@import 'base/variables';
+@import 'base/fonts';
+
+.c-timestamp {
+  font-size: .8rem;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(0, 0, 0, .4);
+}
+
+.c-bubble {
+  background-color: $color-chat-other;
+  min-width: 10px;
+  max-width: $messages-width * .55;
+  border-radius: 19.5px;
+  padding: 6px 12px 7px 12px;
+  margin-top: 2px;
+  word-break: break-all;
+
+  &__name {
+    position: relative;
+    max-width: $messages-width * .55;
+    padding-left: 12px;
+    margin-left: $dp--left-total-length;
+  }
+
+  &--self {
+  }
+
+  &--img {
+    max-width: $messages-width * .80;
+    max-height: $messages-width * .80;
+    border: thin solid rgba(0, 0, 0, 0.5);
+    margin-top: 2px;
+  }
+
+  > span[style] { //Copy pasting from chat bubbles copies the style too, need these rules to fix
+    background-color: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+}
+
+
+//Container
+.c-bubble__container {
+  &--other {
+    > .c-bubble__container--extra {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+
+      > .c-bubble:first-child {
+        border-top-left-radius: 19.5px;
+        border-bottom-left-radius: 4px;
+      }
+
+      > .c-bubble {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      > img, div {
+        position: relative;
+        margin-left: $dp--left-total-length;
+      }
+    }
+
+    > .c-bubble__container--last {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 4px;
+
+      > .c-bubble {
+        border-top-left-radius: 4px;
+      }
+      
+      > .c-bubble--first {
+        border-radius: 19.5px;
+      }
+    }
+  }
+
+  &--self {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+    > .c-bubble__container--extra {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+
+      > .c-bubble:first-child {
+        border-top-right-radius: 19.5px;
+        border-bottom-right-radius: 4px;
+      }
+      
+      > .c-bubble {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+
+    > .c-bubble__container--last {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      > .c-bubble {
+        border-top-right-radius: 4px; 
+      }
+
+      > .c-bubble--first {
+        border-radius: 19.5px;
+      }
+    }
+
+    .c-bubble {
+      background-color: $color-chat-self;
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+//Fonts
+.c-bubble {
+  font: 1rem $font-fb;
+  line-height: 1.34;
+  color: rgb(0, 0, 0);
+
+  div {
+    font: 1rem $font-fb;
+    line-height: 1.34;
+  }
+
+  &__name {
+    font: .8rem $font-fb;
+    line-height: 1.28;
+    color: rgba(0, 0, 0, .40);
+  }
+}
+

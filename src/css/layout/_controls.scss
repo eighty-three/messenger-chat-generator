@@ -1,0 +1,64 @@
+.l-controls {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  box-sizing: border-box; 
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  z-index: 99;
+
+  &__buttons {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 0 3px 0 3px;
+    margin: 0 auto;
+
+    > .c-btn {
+      flex: 1;
+    }
+  }
+
+  &__create-dp {
+    min-height: 40px;
+  }
+
+  &__create-message {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    min-height: 135px; //3 buttons
+    height: auto;
+    margin: 10px auto;
+  }
+
+
+  &__delete-message {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    min-height: 45px; //1 button
+    height: auto;
+    margin: 10px auto;
+  }
+
+  &__presets {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    min-height: 250px;
+    height: 100%;
+    margin: 10px auto;
+  }
+
+  &__save {
+    width: 100%;
+    margin: 10px auto;
+  }
+}
+

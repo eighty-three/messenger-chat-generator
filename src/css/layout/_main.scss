@@ -1,0 +1,47 @@
+@import 'base/variables';
+
+.l-main {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+
+  &__controls {
+    box-sizing: border-box;
+    position: relative;
+    min-width: $controls-width;
+    height: 100%;
+  }
+
+  &__messages {
+    box-sizing: border-box;
+    position: relative;
+    min-width: $messages-width;
+    height: auto;
+    padding: 3px 10px;
+    z-index: 0;
+
+    &--w-1 {
+      width: 100%;
+      height: auto;
+    }
+
+    &--w-2 {
+      width: $messages-width;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  &__images {
+    box-sizing: border-box;
+    position: relative;
+    min-width: $controls-width;
+    height: 100%;
+  }
+}
+
+input[type='radio'] {
+  position: absolute;
+  visibility: hidden;
+}
+

@@ -1,0 +1,47 @@
+@import 'base/variables';
+@import 'base/mixins';
+
+.c-dp {
+  &--left {
+    margin-right: $dp--left-margin-right;
+    @include display-picture($dp--left-length);
+  }
+
+  &--right {
+    margin-left: 3px;
+    @include display-picture($dp--left-length/5*3);
+  }
+
+  &--list {
+    margin: 5px;
+    border: thin solid black;
+    @include display-picture($dp--left-length*1.5);
+  }
+
+  &__right-container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 2;
+    margin-top: 2px;
+  }
+
+  &__list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-width: $controls-width * .8;
+    min-height: 175px; //Same as presets
+    height: 175px;
+    margin: 0 auto;
+  }
+
+  &__controls {
+    box-sizing: border-box;
+    width: 100%;
+    height: 250px;
+  }
+
+}
+

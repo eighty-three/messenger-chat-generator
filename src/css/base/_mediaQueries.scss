@@ -1,0 +1,18 @@
+@media screen and (max-width: 1311px) {
+  .l-images {
+    position: relative;
+    min-height: 420px;
+    z-index: 0;
+    right: auto;
+  }
+
+  .l-main__images {
+    min-width: 0;
+    width: 0;
+  }
+
+  .c-images {
+    border-left: 0;
+  }
+}
+

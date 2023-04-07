@@ -1,0 +1,12 @@
+$font-base-size: 15px;
+$font-fb: fb_font_1, Arial, sans-serif;
+
+@font-face {
+  font-family: fb_font_1;
+  src: url('../../assets/fonts/segoeui.ttf');
+}
+
+* {
+    font: $font-base-size sans-serif;
+}
+

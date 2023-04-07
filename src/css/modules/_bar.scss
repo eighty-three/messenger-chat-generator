@@ -1,0 +1,19 @@
+@import 'base/variables';
+
+.c-bar {
+  background-color: $color-bar;
+  width: $controls-width * .8;
+  height: 4px;
+  max-height: 4px;
+  border-top: thin solid $color-bar;
+  border-radius: 4px;
+  margin: 0 auto;
+
+  &--top {
+    margin-top: 10px;
+  }
+  
+  &--bottom {
+    margin-bottom: 10px;
+  }
+}

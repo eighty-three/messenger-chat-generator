@@ -1,0 +1,36 @@
+@import 'base/variables';
+
+.c-btn {
+  background-color: $color-btn;
+  min-height: 40px;
+  border: 1px solid $color-btn-border;
+  border-radius: 2px;
+  margin: 2px;
+  color: rgb(0, 0, 0);
+  
+  &:hover {
+    background-color: $color-btn-hover;
+  }
+
+  &:active {
+    background-color: $color-btn-active;
+  }
+
+  &--1 {
+    min-width: $controls-width / 3 * 3 * .9;
+  }
+
+  &--2 {
+    min-width: $controls-width / 3 * 1.5 * .9;
+  }
+
+  &--3 {
+    min-width: $controls-width / 3 * 1 * .9;
+  }
+
+  &--preset {
+    width: 80%;
+    margin: 5px auto;
+  }
+}
+

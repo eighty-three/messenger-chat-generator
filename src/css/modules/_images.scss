@@ -1,0 +1,51 @@
+@import 'base/variables';
+
+.c-images {
+  background-color: $color-controls;
+  border-left: thin solid black;
+
+  &__upload {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  &__label {
+    width: $controls-width * .8;
+    cursor: pointer;
+  }
+
+  &__img-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+  }
+
+  &__img {
+    box-sizing: border-box;
+    display: block;
+    max-width: $controls-width * .8;
+    border: 3px solid $color-preset;
+    margin: 0 auto;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      border: 1px solid $color-preset;
+      opacity: 0.8;
+    }
+  }
+
+  input[name='imageSelect']:checked + .c-images__label {
+    > .c-images__img {
+      border: 3px solid $color-preset-selected;
+      opacity: 1;
+    }
+  }
+}
+

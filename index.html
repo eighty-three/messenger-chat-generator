@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FB Messenger Chat Generator</title>
+    <link rel='stylesheet' href='/static/styles.css'>
+</head>
+<body>
+  <!-- Controls -->
+  <div class='l-controls c-controls h-scroll-hide'>
+
+    <!-- Delete -->
+    <div class='l-controls__delete-message l-controls__buttons'>
+      <button id='btnDeleteBubble' class='c-btn c-btn--3'>Delete Bubble</button>
+      <button id='btnDeleteItem' class='c-btn c-btn--3'>Delete Item</button>
+      <button id='btnDeleteConversation' class='c-btn c-btn--3'>Delete Conversation</button>
+    </div>
+
+    <!-- Create -->
+    <div class='l-controls__create-message l-controls__buttons'>
+      <button id='btnCreateTimestamp' class='c-btn c-btn--1'>Add Timestamp</button>
+      <button id='btnCreateMsgOther' class='c-btn c-btn--2'>Create Friend's Message</button>
+      <button id='btnCreateMsgSelf' class='c-btn c-btn--2'>Create My Message</button>
+      <button id='btnAddBubble' class='c-btn c-btn--1'>Add Bubble</button>
+    </div>
+
+    <!-- Right DP -->
+    <div id='dpControlsContainer' class='l-controls__create-dp l-controls__buttons'>
+      <button id='btnDPToggle' class='c-btn c-btn--1 js-toggle'>Show "Seen" DP Controls</button>
+      <button id='btnDPRemoveAll' class='c-btn c-btn--2 js-dp-hide h-hide'>Remove All DP</button>
+      <button id='btnDPAppendAll' class='c-btn c-btn--2 js-dp-hide h-hide'>Append All DP</button>
+      <button id='btnDPRefresh' class='c-btn c-btn--1 js-dp-hide h-hide'>Refresh List From Current Messages</button>
+      <div class='js-dp-hide c-dp__controls h-hide'>
+        <div class='c-bar c-bar--top'></div>
+
+        <div id='dpListContainer' class='c-dp__list h-scroll-hide'></div>
+
+        <div class='c-bar c-bar--bottom'></div>
+      </div>
+    </div>
+
+    <!-- Presets -->
+    <div class='l-controls__presets h-f4'>
+      <div class='l-controls__buttons'>
+        <input id='presetImageUpload' type='file' class='c-presets__upload' multiple accept='image/*'>
+        <button id='btnPresetAdd' class='c-btn c-btn--2'>Add Friend</button>
+        <button id='btnPresetDelete' class='c-btn c-btn--2'>Delete Friend</button>
+      </div>
+      <div class='c-bar c-bar--top'></div>
+
+      <div id='presetImages' class='c-presets__imgs'></div>
+      <div id='presetContainer' class='c-presets h-scroll-hide'>
+          <div class='c-presets__preset'>
+            <input id='preset-0' name='presetSelect' type='radio' value='x' checked='checked' />
+            <label for='preset-0' id='defaultPresetLabel' class='c-presets__label js-preset-selected'></label>
+            <div id='defaultPreset' class='c-presets__label--compressed js-preset-compressed'>
+              <span class='h-f4'>Default</span>
+            </div>
+          </div>
+      </div>
+
+      <div class='c-bar'></div>
+    </div>
+
+    <!-- Images -->
+    <div class='l-images c-images h-scroll-hide'>
+      <div class='l-images__buttons'>
+        <input id='imagesUpload' type='file' class='c-images__upload' multiple accept='image/*'>
+        <button id='btnImageUpload' class='c-btn c-btn--1 h-f1'>Upload Images</button>
+      </div>
+      <div class='c-bar c-bar--top'></div>
+    
+      <div id='imagesContainer' class='l-images__container h-scroll-hide h-f4'></div>
+    
+      <div class='c-bar c-bar--bottom'></div>
+      <div class='l-images__buttons'>
+        <button id='btnImageUnselect' class='c-btn c-btn--2 h-f1'>Unselect Image</button>
+        <button id='btnImageDelete' class='c-btn c-btn--2 h-f1'>Delete Image</button>
+      </div>
+    </div>
+
+    <!-- Save -->
+    <div class='l-controls__save l-controls__buttons'>
+      <button id='btnSave' class='c-btn c-btn--1'>Save</button>
+    </div>
+  </div>
+
+<!-- For layout of body, because controls and images have absolute position -->
+  <div class='l-main'>
+    <div class='l-main__controls'></div>
+    <div class='l-main__messages--w-1'>
+      <div class='l-main__messages--w-2'>
+        <div id='messagesContainer' class='l-main__messages c-messages'></div>
+      </div>
+    </div>
+    <div class='l-main__images'></div>
+  </div>
+<script type='module' src='/static/bundle.js'></script>
+</body>
+</html>
